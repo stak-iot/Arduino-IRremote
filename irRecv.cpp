@@ -20,6 +20,11 @@ int  IRrecv::decode (decode_results *results)
 
 	if (irparams.rcvstate != STATE_STOP)  return false ;
 
+#if DECODE_DAIKIN
+	DBG_PRINTLN("Attempting NEC decode");
+	if (decodeNEC(results))  return true ;
+#endif
+
 #if DECODE_NEC
 	DBG_PRINTLN("Attempting NEC decode");
 	if (decodeNEC(results))  return true ;

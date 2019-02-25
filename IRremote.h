@@ -79,6 +79,12 @@
 #define DECODE_LEGO_PF       0 // NOT WRITTEN
 #define SEND_LEGO_PF         1
 
+#define DECODE_DAIKIN        1
+#define SEND_DAIKIN          0
+
+#define DECODE_DAIKIN2       1
+#define SEND_DAIKIN2         0
+
 //------------------------------------------------------------------------------
 // When sending a Pronto code we request to send either the "once" code
 //                                                   or the "repeat" code
@@ -119,8 +125,19 @@ typedef
 		DENON,
 		PRONTO,
 		LEGO_PF,
+		DAIKIN,
+		DAIKIN2
 	}
 decode_type_t;
+
+// Daikin has a lot of static stuff that is discarded
+const uint16_t kDaikinRawBits = 583;
+const uint16_t kDaikinStateLength = 27;
+const uint16_t kDaikinBits = kDaikinStateLength * 8;
+const uint16_t kDaikinDefaultRepeat = kNoRepeat;
+const uint16_t kDaikin2StateLength = 39;
+const uint16_t kDaikin2Bits = kDaikin2StateLength * 8;
+const uint16_t kDaikin2DefaultRepeat = kNoRepeat;
 
 //------------------------------------------------------------------------------
 // Set DEBUG to 1 for lots of lovely debug output
