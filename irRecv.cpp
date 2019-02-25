@@ -20,11 +20,6 @@ int  IRrecv::decode (decode_results *results)
 
 	if (irparams.rcvstate != STATE_STOP)  return false ;
 
-#if DECODE_DAIKIN
-	DBG_PRINTLN("Attempting NEC decode");
-	if (decodeNEC(results))  return true ;
-#endif
-
 #if DECODE_NEC
 	DBG_PRINTLN("Attempting NEC decode");
 	if (decodeNEC(results))  return true ;
@@ -175,7 +170,7 @@ void  IRrecv::blink13 (int blinkflag)
 //
 bool  IRrecv::isIdle ( )
 {
- return (irparams.rcvstate == STATE_IDLE || irparams.rcvstate == STATE_STOP) ? true : false;
+	return (irparams.rcvstate == STATE_IDLE || irparams.rcvstate == STATE_STOP) ? true : false;
 }
 //+=============================================================================
 // Restart the ISR state machine
